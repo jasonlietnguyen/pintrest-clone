@@ -5,7 +5,7 @@ var boardSchema = new mongoose.Schema({
   image: String,
   link: String,
   body: String,
-  pinsCount: Number,
+  pinsCount: {type: Number, default: 0},
   author: {
     id:{
       type: mongoose.Schema.Types.ObjectId,

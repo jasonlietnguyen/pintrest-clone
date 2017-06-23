@@ -6,14 +6,10 @@ var express = require('express'),
   LocalStrategy = require("passport-local"),
   methodOverride = require('method-override'),
   Board = require('./models/board'),
-  User = require('./models/user')
+  User = require('./models/user'),
   app = express(),
   port = 3000
 
-// Routes
-var  boardRoutes = require("./routes/board"),
-     vaultRoutes = require("./routes/vault")
-     indexRoutes = require("./routes/index")
 
 /////////////////////////////////////////////////////////////////////////////////
 // App Config
@@ -55,6 +51,9 @@ passport.deserializeUser(User.deserializeUser())
 // Routes
 /////////////////////////////////////////////////////////////////////////////////
 
+var  boardRoutes = require("./routes/board"),
+     vaultRoutes = require("./routes/vault")
+     indexRoutes = require("./routes/index")
 app.use(indexRoutes);
 app.use(boardRoutes);
 app.use(vaultRoutes);

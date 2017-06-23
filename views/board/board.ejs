@@ -4,16 +4,47 @@
 
 
 
-  <div class="container">
-    <div class="card-columns">
-      <% boards.forEach(function(board){ %>
-        <div class="card">
+
+  <div class="card-columns">
+    <% boards.forEach(function(board){ %>
+      <div class="card">
+        <a href="<%= board.link%>" target="_blank" class="btn btn-board btn-block"><i class="fa fa-thumb-tack" aria-hidden="true" style="color: white"></i> Save</a>
+        <img src="<%= board.image %>" alt="" width="100%">
+        <div class="card-block">
+          <div class="text-left">
+            <p class="board"><i class="fa fa-thumb-tack" aria-hidden="true"></i> 5</p>
+          </div>
+          <h4>
+            <%= board.title %>
+          </h4>
+          <p>
+            <%= board.body %>
+          </p>
+          <div class="row">
+            <div class="col-md-6">
+              <a href="<%= board.link%>" target="_blank" class="btn btn-primary btn-block">Link to Article</a>
+            </div>
+            <div class="col-md-6">
+              <a href="/board/<%= board._id %>" target="_blank" class="btn btn-success btn-block">View board</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+  </div>
+
+
+
+  <!--<div class="container-fluid">
+  <div class="row">
+    <% boards.forEach(function(board){ %>
+      <div class="col-sm-6 col-md-2" style="display:flex; flex-wrap: wrap">
+        <div class="thumbnail">
           <a href="<%= board.link%>" target="_blank" class="btn btn-board btn-block"><i class="fa fa-thumb-tack" aria-hidden="true" style="color: white"></i> Save</a>
           <img src="<%= board.image %>" alt="" width="100%">
-          <div class="card-block">
-            <div class="text-left">
+
+          <div class="caption">
               <p class="board"><i class="fa fa-thumb-tack" aria-hidden="true"></i> 5</p>
-            </div>
             <h4>
               <%= board.title %>
             </h4>
@@ -25,14 +56,15 @@
                 <a href="<%= board.link%>" target="_blank" class="btn btn-primary btn-block">Link to Article</a>
               </div>
               <div class="col-md-6">
-                <a href="<%= board.link%>" target="_blank" class="btn btn-success btn-block">View board</a>
+                <a href="/board/<%= board._id %>" target="_blank" class="btn btn-success btn-block">View board</a>
               </div>
             </div>
           </div>
         </div>
-        <% }) %>
-    </div>
+      </div>
+      <% }) %>
   </div>
+</div>-->
 
 
   <% include ../partials/footer %>
@@ -42,16 +74,28 @@
       .card-block {
         padding-top: 0;
       }
-      .btn-board{
+
+      .btn-board {
         color: white;
         background-color: #BD081C;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
       }
-      .btn-pin:hover{
+
+      .btn-pin:hover {
         color: white;
       }
-      .board{
+
+      .board {
         margin: 5px 0;
+      }
+
+      .card-columns {
+        @include media-breakpoint-only(lg) {
+          column-count: 2;
+        }
+        @include media-breakpoint-only(xl) {
+          column-count: 5;
+        }
       }
     </style>

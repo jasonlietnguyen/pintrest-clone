@@ -27,19 +27,41 @@ router.get('/board/new', function (req, res) {
 
 //CREATE: POST - CREATE A NEW BOARD
 router.post('/board', function (req, res) {
+  var author = {
+    id: req.user._id,
+    username: req.user.username
+  }
   Board.create({
     title: req.body.title,
     image: req.body.image,
     link: req.body.link,
-    body: req.body.body
-  }, function(err, data){
-    if(err){
+    body: req.body.body,
+    author: author
+  }, function (err, data) {
+    if (err) {
       console.log(err)
-    }else{
+    } else {
       console.log(req.user.username)
       res.redirect('/board')
     }
   })
 })
+
+// SHOW: GET - SHOW A SPECIFIC BOARD
+router.get('/board/:id', function(req, res){
+  Board.findById(req.params.id, function(err, foundBoard){
+    if(err){
+      console.log(err)
+    }else{
+      res.render('board/show', {board: foundBoard})
+    }
+  })
+})
+
+
+// UPDATE PIN COUT
+function addPinCout(){
+  Board.findByIdAndRemove()
+}
 
 module.exports = router;
