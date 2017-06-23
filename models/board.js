@@ -1,10 +1,11 @@
 var mongoose = require("mongoose")
 
-var pinSchema = new mongoose.Schema({
+var boardSchema = new mongoose.Schema({
   title: String,
   image: String,
   link: String,
   body: String,
+  pinsCount: Number,
   author: {
     id:{
       type: mongoose.Schema.Types.ObjectId,
@@ -14,4 +15,4 @@ var pinSchema = new mongoose.Schema({
   }
 })
 
-module.exports = mongoose.model('Pin', pinSchema)
+module.exports = mongoose.model('Board', boardSchema)

@@ -4,15 +4,30 @@
 
 
 
-    <div class="container">
-  <div class="card-columns">
-      <% pins.forEach(function(pin){ %>
+  <div class="container">
+    <div class="card-columns">
+      <% boards.forEach(function(board){ %>
         <div class="card">
-          <img src="<%= pin.image %>" alt="" width="100%">
+          <a href="<%= board.link%>" target="_blank" class="btn btn-board btn-block"><i class="fa fa-thumb-tack" aria-hidden="true" style="color: white"></i> Save</a>
+          <img src="<%= board.image %>" alt="" width="100%">
           <div class="card-block">
-            <h5>
-              <%= pin.body %>
-            </h5>
+            <div class="text-left">
+              <p class="board"><i class="fa fa-thumb-tack" aria-hidden="true"></i> 5</p>
+            </div>
+            <h4>
+              <%= board.title %>
+            </h4>
+            <p>
+              <%= board.body %>
+            </p>
+            <div class="row">
+              <div class="col-md-6">
+                <a href="<%= board.link%>" target="_blank" class="btn btn-primary btn-block">Link to Article</a>
+              </div>
+              <div class="col-md-6">
+                <a href="<%= board.link%>" target="_blank" class="btn btn-success btn-block">View board</a>
+              </div>
+            </div>
           </div>
         </div>
         <% }) %>
@@ -24,12 +39,19 @@
 
 
     <style>
-      .card-columns {
-        @include media-breakpoint-only(lg) {
-          column-count: 2;
-        }
-        @include media-breakpoint-only(xl) {
-          column-count: 3;
-        }
+      .card-block {
+        padding-top: 0;
+      }
+      .btn-board{
+        color: white;
+        background-color: #BD081C;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      .btn-pin:hover{
+        color: white;
+      }
+      .board{
+        margin: 5px 0;
       }
     </style>
