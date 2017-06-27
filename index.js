@@ -7,7 +7,6 @@ var express = require('express'),
   methodOverride = require('method-override'),
   Board = require('./models/board'),
   User = require('./models/user'),
-  Vault = require('./models/vault')
   app = express(),
   port = 3000
 
@@ -53,14 +52,12 @@ passport.deserializeUser(User.deserializeUser())
 /////////////////////////////////////////////////////////////////////////////////
 
 var  boardRoutes = require("./routes/board"),
-     vaultRoutes = require("./routes/vault"),
      dashboardRoutes = require("./routes/dashboard"),
      indexRoutes = require("./routes/index")
 
 app.use(indexRoutes);
 app.use(boardRoutes);
 app.use(dashboardRoutes);
-app.use(vaultRoutes);
 
 
 
