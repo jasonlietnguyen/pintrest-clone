@@ -1,13 +1,17 @@
 <% include ../partials/header %>
 
+<% if(currentUser){ %>
+<h2 class="text-center">Hello, <%= currentUser.username.toUpperCase() %></h2>
+<% } %>
 
-<!--<div class="container">
+
+<div class="container">
   <a href="/dashboard/new">Add New Pin</a>
   <div class="card-columns">
     <% boards.forEach(function(board){ %>
     <% if(user.user.username == board.author.username){ %>
       <div class="card">
-        <a href="<%= board.link%>" target="_blank" class="btn btn-board btn-block"><i class="fa fa-thumb-tack" aria-hidden="true" style="color: white"></i> Save</a>
+        <a class="btn btn-board btn-block"> </a>
         <img src="<%= board.image %>" alt="" width="100%">
         <div class="card-block">
           <div class="text-left">
@@ -32,10 +36,10 @@
       <% } %>
       <% }) %>
   </div>
-</div>-->
+</div>
 
 
-  <div class="container-fluid">
+  <!--<div class="container-fluid">
   <div class="row">
     <% boards.forEach(function(board){ %>
     <% if(user.user.username == board.author.username){ %>
@@ -43,7 +47,6 @@
         <div class="thumbnail">
           <a href="<%= board.link%>" target="_blank" class="btn btn-board btn-block"><i class="fa fa-thumb-tack" aria-hidden="true" style="color: white"></i> Save</a>
           <img src="<%= board.image %>" alt="" width="100%">
-
           <div class="caption">
               <p class="board"><i class="fa fa-thumb-tack" aria-hidden="true"></i> 5</p>
             <h4>
@@ -66,7 +69,7 @@
       <% } %>      
       <% }) %>
   </div>
-</div>
+</div>-->
 
 
   <% include ../partials/footer %>

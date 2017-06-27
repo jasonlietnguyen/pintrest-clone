@@ -1,11 +1,11 @@
 <% include ../partials/header %>
 
 
-<!--<div class="container">
+<div class="container">
   <div class="card-columns">
     <% boards.forEach(function(board){ %>
       <div class="card">
-        <a href="<%= board.link%>" target="_blank" class="btn btn-board btn-block"><i class="fa fa-thumb-tack" aria-hidden="true" style="color: white"></i> Save</a>
+        <a class="btn btn-board btn-block text-right" style="color: white;"><i class="fa fa-user" aria-hidden="true" style="color: white;"></i> | Posted By: <%= board.author.username %></a>
         <img src="<%= board.image %>" alt="" width="100%">
         <div class="card-block">
           <div class="text-left">
@@ -29,16 +29,16 @@
       </div>
       <% }) %>
   </div>
-</div>-->
+</div>
 
 
 
-<div class="container-fluid">
+<!--<div class="container-fluid">
   <div class="row">
     <% boards.forEach(function(board){ %>
       <div class="col-sm-6 col-md-3" style="display:flex; flex-wrap: wrap">
         <div class="thumbnail">
-          <a href="<%= board.link%>" target="_blank" class="btn btn-board btn-block"><i class="fa fa-thumb-tack" aria-hidden="true" style="color: white"></i> Save</a>
+          <a class="btn btn-board btn-block"> </a>
           <img src="<%= board.image %>" alt="" width="100%">
 
           <div class="caption">
@@ -62,7 +62,7 @@
       </div>
       <% }) %>
   </div>
-</div>
+</div>-->
 
 
   <% include ../partials/footer %>
@@ -88,9 +88,20 @@
         margin: 5px 0;
       }
 
+      .thumbnail{
+        border: 1px solid #ddd;
+        padding: 0;
+      }
+      .thumbnail:hover{
+        background-color: #eee;
+      }
+
+      .author{
+        color:white;
+      }
       .card-columns {
         @include media-breakpoint-only(lg) {
-          column-count: 2;
+          column-count: 8;
         }
         @include media-breakpoint-only(xl) {
           column-count: 5;
