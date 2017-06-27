@@ -1,19 +1,18 @@
 var express = require("express"),
   router = express.Router(),
   Board = require("../models/board"),
+  Vault = require("../models/vault")
   MiddleWare = require("../middleware")
 
-
-
-// INDEX: GET - DISPLAY ALL Pins
-router.get('/:username', function (req, res) {
-  Board.find({}, function (err, boards) {
-    if (err) {
+router.get('/vault/:id', function(req, res){
+  Board.find({}, function(err, req){
+    if(err){
       console.log(err)
-    } else {
-      res.render('board/board', { boards: boards })
+    }else{
+
     }
   })
 })
+
 
 module.exports = router;

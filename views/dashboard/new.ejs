@@ -1,0 +1,20 @@
+<% include ../partials/header %>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 col-sm-12">
+        <br>
+        <h1 class="title">Add A New Vault</h1>
+        <form action="/dashboard" method="POST">
+          <!--Title-->
+          <div class="form-group">
+            <input class="form-control" type="text" name="Name" placeholder="Vault Name">
+          </div>
+        </form>
+        <a href="/dashboard">Go Back</a>
+      </div>
+    </div>
+  </div>
+
+  <% include ../partials/footer %>

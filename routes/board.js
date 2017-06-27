@@ -5,10 +5,6 @@ var express = require("express"),
 
 
 
-router.get('/', function (req, res) {
-  res.redirect('/board')
-})
-
 // INDEX: GET - DISPLAY ALL BOARD
 router.get('/board', function (req, res) {
   Board.find({}, function (err, boards) {
@@ -19,6 +15,7 @@ router.get('/board', function (req, res) {
     }
   })
 })
+
 
 // NEW: GET - RETURN A FORM FOR CREATING A NEW BOARD
 router.get('/board/new', function (req, res) {
