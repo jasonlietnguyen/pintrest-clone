@@ -12,26 +12,6 @@ var express = require('express'),
 
 
 /////////////////////////////////////////////////////////////////////////////////
-// App Config
-/////////////////////////////////////////////////////////////////////////////////
-
-// Add Mongoose
-mongoose.connect('mongodb://pintrest:pintrest@ds135912.mlab.com:35912/pintrest');
-// Make Ejs Default Files
-app.set('view engine', 'ejs');
-// Make Css files work
-app.use(express.static('public'));
-// Use Body Parser
-app.use(bodyParser.urlencoded({ extended: true }));
-// Take anything with _method and treat it as a PUT or DELETE
-app.use(methodOverride('_method'));
-app.use(function (req, res, next) {
-  res.locals.currentUser = req.user;
-  next();
-})
-
-
-/////////////////////////////////////////////////////////////////////////////////
 // Passport
 /////////////////////////////////////////////////////////////////////////////////
 
@@ -45,6 +25,27 @@ app.use(passport.session())
 passport.use(new LocalStrategy(User.authenticate()))
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// App Config
+/////////////////////////////////////////////////////////////////////////////////
+
+// Add Mongoose
+mongoose.connect('mongodb://pintrest:pintrest@ds135912.mlab.com:35912/pintrest');
+// Make Ejs Default Files
+app.set('view engine', 'ejs');
+// Make Css files work
+app.use(express.static('public'));
+// Use Body Parser
+app.use(bodyParser.urlencoded({ extended: true }));
+// Take anything with _method and treat it as a PUT or DELETE
+app.use(methodOverride('_method'));
+app.use(function(req, res, next){
+  res.locals.currentUser = req.user;
+  next();
+})
+
 
 
 /////////////////////////////////////////////////////////////////////////////////
